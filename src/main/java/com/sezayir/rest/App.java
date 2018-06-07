@@ -1,15 +1,13 @@
 package com.sezayir.rest;
 
+import java.io.IOException;
+import java.net.URI;
+import java.sql.SQLException;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 
-import com.sezayir.dao.DerbDbRepsository;
 import com.sezayir.service.BankServiceImpl;
-
-import java.io.IOException;
-import java.net.URI;
-import java.sql.SQLException;
 
 
 /**
@@ -38,7 +36,7 @@ public class App {
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException    {
         final HttpServer server = startServer();
-        System.out.println("ersey app started with WADL available at :"+ BASE_URI);
+        System.out.println("Jersey app started with WADL available at :"+ BASE_URI);
         System.out.println("Hit enter to stop it");
         
         BankServiceImpl bs=  new    BankServiceImpl();
