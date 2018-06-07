@@ -34,18 +34,19 @@ public class App {
     }
 
 
-    public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException    {
-        final HttpServer server = startServer();
-        System.out.println("Jersey app started with WADL available at :"+ BASE_URI);
-        System.out.println("Hit enter to stop it");
-        
-        BankServiceImpl bs=  new    BankServiceImpl();
-        bs.createUsers();
-        bs.createAccounst();
-        
-        System.in.read();
-        server.stop();
-    }
+	public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException {
+		final HttpServer server = startServer();
+		System.out.println("Jersey app started and  available at :" + BASE_URI);
+
+		BankServiceImpl service = new BankServiceImpl();
+		service.createUsers();
+		service.createAccounst();
+		System.out.println("HIT ENTER TO STOP IT");
+
+		System.in.read();
+		service.cleanDB();
+		server.stop();
+	}
     
 
 }

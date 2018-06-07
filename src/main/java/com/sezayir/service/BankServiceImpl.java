@@ -17,6 +17,10 @@ public class BankServiceImpl implements BankService {
 		return DerbDbRepsository.getConnection();
 	}
 
+	public void cleanDB() throws ClassNotFoundException, SQLException {
+		DerbDbRepsository.cleanDB();
+	}
+
 	@Override
 	public void createUsers() throws ClassNotFoundException, SQLException {
 		DerbDbRepsository.createUsers();

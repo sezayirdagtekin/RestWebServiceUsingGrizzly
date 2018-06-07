@@ -19,7 +19,7 @@ public class DerbDbRepsository {
 	public static void createUsers() throws ClassNotFoundException, SQLException {
 		Connection connection = getConnection();
 		Statement st = connection.createStatement();
-		st.executeUpdate("DROP TABLE Customer");
+
 		st.executeUpdate("create  table Customer (name varchar(50) , surname varchar(50), username varchar(20) )");
 		System.out.println("Customer table isCreated");
 		st.executeUpdate("INSERT INTO Customer " + "VALUES ('Sezayir',  'Dagtekin', 'user1')");
@@ -32,7 +32,6 @@ public class DerbDbRepsository {
 	public static void createAccounts() throws ClassNotFoundException, SQLException {
 		Connection connection = getConnection();
 		Statement st = connection.createStatement();
-		st.executeUpdate("DROP TABLE Account");
 		st.executeUpdate("create  table Account (accountid int,  username varchar(20), balance  decimal )");
 		System.out.println("Account table is created");
 		st.executeUpdate("INSERT INTO Account " + "VALUES (1001,  'user1', 1000)");
@@ -42,4 +41,11 @@ public class DerbDbRepsository {
 		connection.close();
 	}
 
+	public static void cleanDB() throws SQLException, ClassNotFoundException {
+		Connection connection = getConnection();
+		Statement st = connection.createStatement();
+		st.executeUpdate("DROP TABLE Account");
+		st.executeUpdate("DROP TABLE Customer");
+		System.out.println("Account & Customer Tables deleted");
+	}
 }
