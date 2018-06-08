@@ -1,4 +1,4 @@
-package com.sezayir.rest;
+package com.sezayir.controller;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;

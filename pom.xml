@@ -3,7 +3,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.sezayir.rest</groupId>
+    <groupId>com.sezayir</groupId>
     <artifactId>IngBank</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
@@ -80,7 +80,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>com.sezayir.rest.App</mainClass>
+                    <mainClass>com.sezayir.start.App</mainClass>
                 </configuration>
             </plugin>
         </plugins>

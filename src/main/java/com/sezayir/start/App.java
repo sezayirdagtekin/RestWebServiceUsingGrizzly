@@ -1,4 +1,4 @@
-package com.sezayir.rest;
+package com.sezayir.start;
 
 import java.io.IOException;
 import java.net.URI;
@@ -25,7 +25,7 @@ public class App {
     public static HttpServer startServer() {
         // create a resource config that scans for JAX-RS resources and providers
         // in com.example.rest package
-        final ResourceConfig rc = new ResourceConfig().packages("com.sezayir.rest");
+        final ResourceConfig rc = new ResourceConfig().packages("com.sezayir");
         
 
         // create and start a new instance of grizzly http server
