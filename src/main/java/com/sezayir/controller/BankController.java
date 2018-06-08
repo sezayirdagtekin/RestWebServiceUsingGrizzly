@@ -50,12 +50,18 @@ public class BankController {
 		BankService service = new BankServiceImpl();
 		Account source = service.getAccountById(sourceUserName);
 		Account target = service.getAccountById(targetUserName);
-		source.setBalance(source.getBalance().subtract(amount));
-		target.setBalance(target.getBalance().add(amount));
-		service.updateAccount(source);
-		service.updateAccount(target);
-		
-		return amount+" $ is transfered from "+sourceUserName+ " to "+ targetUserName;
+
+		BigDecimal subtract = source.getBalance().subtract(amount);
+
+		if (subtract.compareTo(BigDecimal.ZERO) > 0) {
+			source.setBalance(subtract);
+			target.setBalance(target.getBalance().add(amount));
+			service.updateAccount(source);
+			service.updateAccount(target);
+			return amount + " $ is transfered from " + sourceUserName + " to " + targetUserName;
+		} else {
+			return "Insufficient balance!!!";
+		}
 	}
 
 
