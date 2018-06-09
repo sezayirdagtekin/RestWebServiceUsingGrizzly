@@ -12,8 +12,9 @@ import org.junit.Test;
 
 public class UtilTest {
 
-	private static final String PATH = "dir_temp//test-file.txt";
-	private static final String INVALID_PATH = "dir_temp//test-file.txt";
+	private static final String DIRECTORY="temp1";
+	private static final String PATH = DIRECTORY+"//test-file.txt";
+	private static final String INVALID_DIRECTORY = "invalid-dir//password.txt";
 
 	@Before
 	public void setUp() throws IOException {
@@ -27,17 +28,17 @@ public class UtilTest {
 	public void givenDirectory_whenDeletedWithRecursion_thenIsGone() throws IOException {
 
 		boolean result;
-		result = Util.deleteDirectoryStream(PATH);
+		result = Util.deleteDirectoryStream(DIRECTORY);
 		assertThat(result, is(true));
 		
-		result = Util.deleteDirectoryStream(INVALID_PATH);
+		result = Util.deleteDirectoryStream(INVALID_DIRECTORY);
 		assertThat(result, is(false));
 	}
 
 	@After
 	public void tearDown() throws Exception {
 		//if directory still exist delete otherwise return false
-		Util.deleteDirectoryStream(PATH);
+		Util.deleteDirectoryStream(DIRECTORY);
 	}
 
 }

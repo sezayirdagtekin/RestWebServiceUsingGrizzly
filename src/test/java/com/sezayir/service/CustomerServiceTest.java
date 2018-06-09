@@ -24,8 +24,12 @@ public class CustomerServiceTest {
 
 	@Mock
 	CustomerService customerService;
-
+	
 	private List<Customer> customerList;
+	
+	private static final String USER1="user1";
+	
+	private static final String USER2="user2";
 
 	@Before
 	public void setUp() throws Exception {
@@ -33,12 +37,12 @@ public class CustomerServiceTest {
 		List<Customer> list = new ArrayList<>();
 
 		Customer customer1 = new Customer();
-		customer1.setUsername("user1");
+		customer1.setUsername(USER1);
 		customer1.setName("Sezayir");
 		customer1.setSurname("Dagtekin");
 
 		Customer customer2 = new Customer();
-		customer2.setUsername("user2");
+		customer2.setUsername(USER2);
 		customer2.setName("Adam");
 		customer2.setSurname("Smith");
 

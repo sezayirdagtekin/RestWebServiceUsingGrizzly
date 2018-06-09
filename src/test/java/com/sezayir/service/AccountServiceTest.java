@@ -29,7 +29,12 @@ public class AccountServiceTest {
 	AcccountService accountService;
 
 	private Account account;
+	
 	private List<Account> accountList;
+	
+	private static final String USER1="user1";
+	
+	private static final String USER2="user2";
 
 	@Before
 	public void setUp() throws Exception {
@@ -39,18 +44,18 @@ public class AccountServiceTest {
 		Account account1 = new Account();
 		account1.setAccountId(1001);
 		account1.setBalance(new BigDecimal(5000));
-		account1.setUserName("user1");
+		account1.setUserName(USER1);
 		
 		Account account2 = new Account();
 		account2.setAccountId(1002);
 		account2.setBalance(new BigDecimal(3000));
-		account2.setUserName("user2");
+		account2.setUserName(USER2);
 		
 		list.add(account1);
 		list.add(account2);
 	
-		Mockito.when(accountService.getAccountByUsername("user1")).thenReturn(account1);
-		account = accountService.getAccountByUsername("user1");
+		Mockito.when(accountService.getAccountByUsername(USER1)).thenReturn(account1);
+		account = accountService.getAccountByUsername(USER1);
 		
 		Mockito.when(accountService.getAccounts()).thenReturn(list);
 		accountList= accountService.getAccounts();
@@ -66,10 +71,10 @@ public class AccountServiceTest {
 	@Test
 	public void getAccountByUsernameTest() throws ClassNotFoundException, SQLException {
 
-		Mockito.verify(accountService).getAccountByUsername(("user1"));
+		Mockito.verify(accountService).getAccountByUsername((USER1));
 		assertNotNull(account);
 		assertThat(account.getBalance(), is(new BigDecimal(5000)));
-		assertThat(account.getUserName(), is("user1"));
+		assertThat(account.getUserName(), is(USER1));
 		assertThat(account.getAccountId(), is(new Long(1001)));
 	}
 
@@ -81,7 +86,7 @@ public class AccountServiceTest {
 
 	@Test
 	public void getAccountByUsernameCheckWithInvalidDataTest() throws ClassNotFoundException, SQLException {
-		account = accountService.getAccountByUsername("user1");
+		account = accountService.getAccountByUsername(USER1);
 
 		assertNotNull(account);
 		assertThat(account.getBalance(), is(not(new BigDecimal(2000))));
@@ -118,7 +123,7 @@ public class AccountServiceTest {
 		Account account2 = new Account();
 		account2.setAccountId(1002);
 		account2.setBalance(new BigDecimal(4000));
-		account2.setUserName("user2");
+		account2.setUserName(USER2);
 		Account updatedAccount=accountService.updateAccount(account2);
 		
 		Mockito.verify(accountService).updateAccount(account2);

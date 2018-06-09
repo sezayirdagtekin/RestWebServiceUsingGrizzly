@@ -30,7 +30,6 @@ public class App {
      */
     public static HttpServer startServer() {
         // create a resource config that scans for JAX-RS resources and providers
-        // in com.example.rest package
         final ResourceConfig rc = new ResourceConfig().packages("com.sezayir");
         
 
@@ -43,7 +42,7 @@ public class App {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException {
 		final HttpServer server = startServer();
 		System.out.println("Jersey app started and  available at :" + BASE_URI);
-		//Clean old Derby folders
+		//Clean old derby folders
 		Util.deleteDirectoryStream(DERBY_PATH);
 		
 		System.out.println("Database is being configured. Please wait...");
