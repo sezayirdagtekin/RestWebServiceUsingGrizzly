@@ -45,11 +45,13 @@ public class DerbDbRepsository {
 		return result;
 	}
 
-	public static void dropUserTable() throws SQLException, ClassNotFoundException {
+	public static int dropUserTable() throws SQLException, ClassNotFoundException {
+		int    result=0;
 		Connection connection = getConnection();
 		Statement st = connection.createStatement();
-		st.executeUpdate("DROP TABLE Customer");
+		result=st.executeUpdate("DROP TABLE Customer");
 		System.out.println(" Customer Table deleted");
+		return result;
 	}
 
 	public static int   dropAcoountTable() throws SQLException, ClassNotFoundException {

@@ -17,8 +17,8 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public void createUsers() throws ClassNotFoundException, SQLException {
-		DerbDbRepsository.createUsers();
+	public int createUsers() throws ClassNotFoundException, SQLException {
+		return DerbDbRepsository.createUsers();
 	}
 
 
@@ -56,8 +56,8 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public void dropUserTable() throws ClassNotFoundException, SQLException {
-		DerbDbRepsository.dropUserTable();
+	public int dropUserTable() throws ClassNotFoundException, SQLException {
+		return DerbDbRepsository.dropUserTable();
 	}
 	
 
