@@ -1,26 +1,27 @@
-package com.sezayir.rest;
+package com.sezayir.start;
+
+import static org.junit.Assert.assertEquals;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 
 import org.glassfish.grizzly.http.server.HttpServer;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.sezayir.start.App;
 
-import static org.junit.Assert.assertEquals;
-
-public class MyResourceTest {
+public class AppTest {
 
     private HttpServer server;
     private WebTarget target;
+    
+
 
     @Before
     public void setUp() throws Exception {
+
         // start the server
         server = App.startServer();
         // create the client
@@ -45,7 +46,7 @@ public class MyResourceTest {
      */
     @Test
     public void testGetIt() {
-        String responseMsg = target.path("myresource").request().get(String.class);
+        String responseMsg = target.path("com.sezayir").request().get(String.class);
         assertEquals("Got it!", responseMsg);
     }
 }
