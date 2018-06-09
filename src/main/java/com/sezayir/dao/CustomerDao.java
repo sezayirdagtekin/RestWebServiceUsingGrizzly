@@ -6,22 +6,23 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
+import org.apache.log4j.Logger;
 import com.sezayir.model.Customer;
 import com.sezayir.repository.DerbDbRepsository;
 
+
 public class CustomerDao {
-	
+	final static Logger log= Logger.getLogger(CustomerDao.class);
 	public static int createCustomers() throws ClassNotFoundException, SQLException {
 		int result=0;
 		Connection connection = DerbDbRepsository.getConnection();
 		Statement st = connection.createStatement();
 		st.executeUpdate("create  table Customer (name varchar(50) , surname varchar(50), username varchar(20) )");
-		System.out.println("Customer table isCreated");
+		log.info("Customer table isCreated");
 		result=st.executeUpdate("INSERT INTO Customer " + "VALUES ('Sezayir',  'Dagtekin', 'user1')");
-		System.out.println("user1 is  inserted");
+		log.info("user1 is  inserted");
 		result=st.executeUpdate("INSERT INTO Customer " + "VALUES ('Adam',  'Smith', 'user2')");
-		System.out.println("user2 is inserted");
+		log.info("user2 is inserted");
 		connection.close();
 		return result;
 	}	
@@ -46,7 +47,7 @@ public class CustomerDao {
 		Connection connection = DerbDbRepsository.getConnection();
 		Statement st = connection.createStatement();
 		result=st.executeUpdate("DROP TABLE Customer");
-		System.out.println(" Customer Table deleted");
+		log.info("Customer Table deleted");
 		return result;
 	}
 }
