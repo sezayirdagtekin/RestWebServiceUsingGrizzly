@@ -11,7 +11,7 @@ import com.sezayir.entity.Account;
 public class AccountDao {
 	
 
-	public static void createAccounts() throws ClassNotFoundException, SQLException {
+	public  void createAccounts() throws ClassNotFoundException, SQLException {
 		Connection connection = DerbDbRepsository.getConnection();
 		Statement st = connection.createStatement();
 		st.executeUpdate("create  table Account (accountid int,  username varchar(20), balance  decimal )");
@@ -23,7 +23,7 @@ public class AccountDao {
 		connection.close();
 	}
 
-	public static List<Account> getAccounts() throws ClassNotFoundException, SQLException {
+	public  List<Account> getAccounts() throws ClassNotFoundException, SQLException {
 		Statement st = DerbDbRepsository.getConnection().createStatement();
 		List<Account> accounts = new ArrayList<>();
 		ResultSet rec = st.executeQuery("select accountid,username,balance from Account");
@@ -38,7 +38,7 @@ public class AccountDao {
 		return accounts;
 	}
 	
-	public static Account getAccountByUsername(String username) throws ClassNotFoundException, SQLException {
+	public  Account getAccountByUsername(String username) throws ClassNotFoundException, SQLException {
 		Statement st = DerbDbRepsository.getConnection().createStatement();
 		Account account = null;
 		ResultSet rec = st.executeQuery("select accountid,username,balance from Account where username='" + username + "'");
@@ -52,13 +52,13 @@ public class AccountDao {
 		return account;
 	}
 
-	public static void updateAccount(Account account) throws ClassNotFoundException, SQLException {
+	public  void updateAccount(Account account) throws ClassNotFoundException, SQLException {
 		Statement st = DerbDbRepsository.getConnection().createStatement();
 		st.executeUpdate("update Account set balance=" + account.getBalance() + " where username='"+ account.getUserName() + "'");
 		st.close();
 	}
 	
-	public static void dropAccounts() throws SQLException, ClassNotFoundException {
+	public  void dropAccounts() throws SQLException, ClassNotFoundException {
 		Connection connection = DerbDbRepsository.getConnection();
 		Statement st = connection.createStatement();
 		st.executeUpdate("DROP TABLE Account");

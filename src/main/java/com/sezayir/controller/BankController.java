@@ -12,8 +12,10 @@ import javax.ws.rs.core.MediaType;
 import com.google.gson.Gson;
 import com.sezayir.entity.Account;
 import com.sezayir.entity.Customer;
-import com.sezayir.service.BankService;
-import com.sezayir.service.BankServiceImpl;
+import com.sezayir.service.AcccountService;
+import com.sezayir.service.AccountServiceImpl;
+import com.sezayir.service.CustomerService;
+import com.sezayir.service.CustomerServiceImpl;
 
 
 @Path("bank")
@@ -24,7 +26,7 @@ public class BankController {
 	@Path("users")
 	public String getCustomers() throws ClassNotFoundException, SQLException {
 		
-		BankService bs = new BankServiceImpl();
+		CustomerService bs = new CustomerServiceImpl();
 		List<Customer> customers = bs.getCustomers();
 		String json = new Gson().toJson(customers);
 		return json;
@@ -35,7 +37,7 @@ public class BankController {
 	@Path("accounts")
 	public String getAccounts() throws ClassNotFoundException, SQLException {
 		
-		BankService service = new BankServiceImpl();
+		AcccountService service = new AccountServiceImpl();
 		List<Account> accounts = service.getAccounts();
 		String json = new Gson().toJson(accounts);
 		return json;
@@ -47,9 +49,9 @@ public class BankController {
 	public String transfer(@PathParam("sourceUserName") String sourceUserName, @PathParam("targetUserName") String targetUserName, @PathParam("amount") BigDecimal amount)
 			throws ClassNotFoundException, SQLException {
 
-		BankService service = new BankServiceImpl();
-		Account source = service.getAccountById(sourceUserName);
-		Account target = service.getAccountById(targetUserName);
+		AcccountService service = new AccountServiceImpl();
+		Account source = service.getAccountByUsername(sourceUserName);
+		Account target = service.getAccountByUsername(targetUserName);
 
 		BigDecimal subtract = source.getBalance().subtract(amount);
 

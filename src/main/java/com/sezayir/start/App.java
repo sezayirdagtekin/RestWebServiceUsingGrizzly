@@ -6,8 +6,10 @@ import java.sql.SQLException;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
-
-import com.sezayir.service.BankServiceImpl;
+import com.sezayir.service.AcccountService;
+import com.sezayir.service.AccountServiceImpl;
+import com.sezayir.service.CustomerService;
+import com.sezayir.service.CustomerServiceImpl;
 
 
 /**
@@ -38,13 +40,15 @@ public class App {
 		final HttpServer server = startServer();
 		System.out.println("Jersey app started and  available at :" + BASE_URI);
 
-		BankServiceImpl service = new BankServiceImpl();
-		service.createUsers();
-		service.createAccounst();
+		CustomerService customerService = new CustomerServiceImpl();
+		customerService.createUsers();
+		AcccountService accountService= new AccountServiceImpl();
+		accountService.createAccount();
 		System.out.println("HIT ENTER TO STOP IT");
 
 		System.in.read();
-		service.cleanDB();
+		customerService.dropUserTable();
+		accountService.dropAccountTable();
 		server.stop();
 	}
     

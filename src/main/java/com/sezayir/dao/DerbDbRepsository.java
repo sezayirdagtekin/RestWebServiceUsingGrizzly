@@ -16,36 +16,48 @@ public class DerbDbRepsository {
 		return connection;
 	}
 
-	public static void createUsers() throws ClassNotFoundException, SQLException {
+	public static int  createUsers() throws ClassNotFoundException, SQLException {
+		int result=0;
 		Connection connection = getConnection();
 		Statement st = connection.createStatement();
 
 		st.executeUpdate("create  table Customer (name varchar(50) , surname varchar(50), username varchar(20) )");
 		System.out.println("Customer table isCreated");
-		st.executeUpdate("INSERT INTO Customer " + "VALUES ('Sezayir',  'Dagtekin', 'user1')");
+		result=st.executeUpdate("INSERT INTO Customer " + "VALUES ('Sezayir',  'Dagtekin', 'user1')");
 		System.out.println("user1 is  inserted");
-		st.executeUpdate("INSERT INTO Customer " + "VALUES ('Adam',  'Smith', 'user2')");
+		 result=st.executeUpdate("INSERT INTO Customer " + "VALUES ('Adam',  'Smith', 'user2')");
 		System.out.println("user2 is inserted");
 		connection.close();
+		return result;
 	}
 
-	public static void createAccounts() throws ClassNotFoundException, SQLException {
+	public static int createAccounts() throws ClassNotFoundException, SQLException {
+		int    result=0;
 		Connection connection = getConnection();
 		Statement st = connection.createStatement();
 		st.executeUpdate("create  table Account (accountid int,  username varchar(20), balance  decimal )");
 		System.out.println("Account table is created");
-		st.executeUpdate("INSERT INTO Account " + "VALUES (1001,  'user1', 1000)");
+	    result=st.executeUpdate("INSERT INTO Account " + "VALUES (1001,  'user1', 1000)");
 		System.out.println("Account 1001 is created and assigned to user1");
-		st.executeUpdate("INSERT INTO Account " + "VALUES (1002,  'user2', 2000)");
+		result=st.executeUpdate("INSERT INTO Account " + "VALUES (1002,  'user2', 2000)");
 		System.out.println("Account 1002  is created and assigned to user2");
 		connection.close();
+		return result;
 	}
 
-	public static void cleanDB() throws SQLException, ClassNotFoundException {
+	public static void dropUserTable() throws SQLException, ClassNotFoundException {
 		Connection connection = getConnection();
 		Statement st = connection.createStatement();
-		st.executeUpdate("DROP TABLE Account");
 		st.executeUpdate("DROP TABLE Customer");
-		System.out.println("Account & Customer Tables deleted");
+		System.out.println(" Customer Table deleted");
+	}
+
+	public static int   dropAcoountTable() throws SQLException, ClassNotFoundException {
+		int    result=0;
+		Connection connection = getConnection();
+		Statement st = connection.createStatement();
+		result= st.executeUpdate("DROP TABLE Account");
+		System.out.println("Account  Table deleted");
+		return result;
 	}
 }
