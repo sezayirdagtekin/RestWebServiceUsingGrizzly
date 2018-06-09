@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sezayir.dao.AccountDao;
 import com.sezayir.model.Account;
 import com.sezayir.repository.DerbDbRepsository;
 
@@ -18,7 +19,7 @@ public class AccountServiceImpl implements AcccountService {
 
 	@Override
 	public int createAccount() throws ClassNotFoundException, SQLException {
-		return DerbDbRepsository.createAccounts();
+		return AccountDao.createAccounts();
 	}
 
 	public List<Account> getAccounts() throws ClassNotFoundException, SQLException {
@@ -55,14 +56,15 @@ public class AccountServiceImpl implements AcccountService {
 	@Override
 	public Account updateAccount(Account account) throws ClassNotFoundException, SQLException {
 		Statement st = getConnection().createStatement();
-		st.executeUpdate("update Account set balance=" + account.getBalance() + " where username='"+ account.getUserName() + "'");
+		st.executeUpdate("update Account set balance=" + account.getBalance() + " where username='"
+				+ account.getUserName() + "'");
 		st.close();
 		return account;
 	}
 
 	@Override
 	public int dropAccountTable() throws ClassNotFoundException, SQLException {
-	return DerbDbRepsository.dropAcoountTable();	
+		return AccountDao.dropAcoountTable();
 	}
 
 }

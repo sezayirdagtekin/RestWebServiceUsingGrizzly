@@ -48,13 +48,13 @@ public class App {
 		
 		System.out.println("Database is being configured. Please wait...");
 		CustomerService customerService = new CustomerServiceImpl();
-		customerService.createUsers();
+		customerService.createCustomers();
 		AcccountService accountService= new AccountServiceImpl();
 		accountService.createAccount();
 		System.out.println("HIT ENTER TO STOP IT");
 
 		System.in.read();
-		customerService.dropUserTable();
+		customerService.dropCustomerTable();
 		accountService.dropAccountTable();
 		server.stop();
 	}

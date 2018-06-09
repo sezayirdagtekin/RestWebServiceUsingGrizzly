@@ -13,16 +13,18 @@ import com.sezayir.repository.DerbDbRepsository;
 public class AccountDao {
 	
 
-	public  void createAccounts() throws ClassNotFoundException, SQLException {
+	public  static int createAccounts() throws ClassNotFoundException, SQLException {
+		int    result=0;
 		Connection connection = DerbDbRepsository.getConnection();
 		Statement st = connection.createStatement();
 		st.executeUpdate("create  table Account (accountid int,  username varchar(20), balance  decimal )");
 		System.out.println("Account table is created");
-		st.executeUpdate("INSERT INTO Account " + "VALUES (1001,  'user1', 1000)");
+		result=st.executeUpdate("INSERT INTO Account " + "VALUES (1001,  'user1', 1000)");
 		System.out.println("Account 1001 is created and assigned to user1");
-		st.executeUpdate("INSERT INTO Account " + "VALUES (1002,  'user2', 2000)");
+		result=st.executeUpdate("INSERT INTO Account " + "VALUES (1002,  'user2', 2000)");
 		System.out.println("Account 1002  is created and assigned to user2");
 		connection.close();
+		return result;
 	}
 
 	public  List<Account> getAccounts() throws ClassNotFoundException, SQLException {
@@ -60,11 +62,15 @@ public class AccountDao {
 		st.close();
 	}
 	
-	public  void dropAccounts() throws SQLException, ClassNotFoundException {
+
+	public static int dropAcoountTable() throws ClassNotFoundException, SQLException {
+		int result=0;
 		Connection connection = DerbDbRepsository.getConnection();
 		Statement st = connection.createStatement();
-		st.executeUpdate("DROP TABLE Account");
+		result=st.executeUpdate("DROP TABLE Account");
 		System.out.println("Account Table deleted");
+		return result;
 	}
+
 
 }

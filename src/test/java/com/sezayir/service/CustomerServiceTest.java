@@ -45,18 +45,18 @@ public class CustomerServiceTest {
 		list.add(customer1);
 		list.add(customer2);
 
-		Mockito.when(customerService.createUsers()).thenReturn(1);
+		Mockito.when(customerService.createCustomers()).thenReturn(1);
 
 		Mockito.when(customerService.getCustomers()).thenReturn(list);
 		customerList = customerService.getCustomers();
 
-		Mockito.when(customerService.dropUserTable()).thenReturn(1);
+		Mockito.when(customerService.dropCustomerTable()).thenReturn(1);
 	}
 
 	@Test
 	public void createCustomers_MethodTest() throws ClassNotFoundException, SQLException {
-		int result = customerService.createUsers();
-		Mockito.verify(customerService).createUsers();
+		int result = customerService.createCustomers();
+		Mockito.verify(customerService).createCustomers();
 		assertThat(result, is(1));
 	}
 
@@ -75,8 +75,8 @@ public class CustomerServiceTest {
 
 	@Test
 	public void dropCustomerTable_MethodTest() throws ClassNotFoundException, SQLException {
-		int result = customerService.dropUserTable();
-		Mockito.verify(customerService).dropUserTable();
+		int result = customerService.dropCustomerTable();
+		Mockito.verify(customerService).dropCustomerTable();
 		assertThat(result, is(1));
 	}
 }

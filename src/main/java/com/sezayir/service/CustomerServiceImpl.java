@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
+import com.sezayir.dao.CustomerDao;
 import com.sezayir.model.Account;
 import com.sezayir.model.Customer;
 import com.sezayir.repository.DerbDbRepsository;
@@ -18,8 +18,8 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public int createUsers() throws ClassNotFoundException, SQLException {
-		return DerbDbRepsository.createUsers();
+	public int createCustomers() throws ClassNotFoundException, SQLException {
+		return CustomerDao.createCustomers();
 	}
 
 
@@ -57,8 +57,8 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public int dropUserTable() throws ClassNotFoundException, SQLException {
-		return DerbDbRepsository.dropUserTable();
+	public int  dropCustomerTable() throws ClassNotFoundException, SQLException {
+		return CustomerDao.dropCustomers();
 	}
 	
 

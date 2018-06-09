@@ -12,16 +12,18 @@ import com.sezayir.repository.DerbDbRepsository;
 
 public class CustomerDao {
 	
-	public static void createCustomers() throws ClassNotFoundException, SQLException {
+	public static int createCustomers() throws ClassNotFoundException, SQLException {
+		int result=0;
 		Connection connection = DerbDbRepsository.getConnection();
 		Statement st = connection.createStatement();
 		st.executeUpdate("create  table Customer (name varchar(50) , surname varchar(50), username varchar(20) )");
 		System.out.println("Customer table isCreated");
-		st.executeUpdate("INSERT INTO Customer " + "VALUES ('Sezayir',  'Dagtekin', 'user1')");
+		result=st.executeUpdate("INSERT INTO Customer " + "VALUES ('Sezayir',  'Dagtekin', 'user1')");
 		System.out.println("user1 is  inserted");
-		st.executeUpdate("INSERT INTO Customer " + "VALUES ('Adam',  'Smith', 'user2')");
+		result=st.executeUpdate("INSERT INTO Customer " + "VALUES ('Adam',  'Smith', 'user2')");
 		System.out.println("user2 is inserted");
 		connection.close();
+		return result;
 	}	
 	
 	public static List<Customer> getCustomers() throws ClassNotFoundException, SQLException {
@@ -39,10 +41,12 @@ public class CustomerDao {
 
 		return customerList;
 	}
-	public static void dropCustomers() throws SQLException, ClassNotFoundException {
+	public static int dropCustomers() throws SQLException, ClassNotFoundException {
+		int result=0;
 		Connection connection = DerbDbRepsository.getConnection();
 		Statement st = connection.createStatement();
-		st.executeUpdate("DROP TABLE Customer");
+		result=st.executeUpdate("DROP TABLE Customer");
 		System.out.println(" Customer Table deleted");
+		return result;
 	}
 }
