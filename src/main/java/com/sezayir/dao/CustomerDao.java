@@ -7,7 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sezayir.entity.Customer;
+import com.sezayir.model.Customer;
+import com.sezayir.repository.DerbDbRepsository;
 
 public class CustomerDao {
 	

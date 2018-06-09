@@ -1,4 +1,4 @@
-package com.sezayir.entity;
+package com.sezayir.model;
 
 public class Customer {
 

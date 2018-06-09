@@ -3,9 +3,11 @@ package com.sezayir.start;
 import java.io.IOException;
 import java.net.URI;
 import java.sql.SQLException;
+
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
+
 import com.sezayir.service.AcccountService;
 import com.sezayir.service.AccountServiceImpl;
 import com.sezayir.service.CustomerService;

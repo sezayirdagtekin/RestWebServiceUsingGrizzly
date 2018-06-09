@@ -9,8 +9,6 @@ import java.util.Comparator;
 
 public class Util {
 
-
-
 	public static boolean deleteDirectoryStream( String file_path) throws IOException {
 
 		Path path = Paths.get(file_path);

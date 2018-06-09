@@ -1,4 +1,4 @@
-package com.sezayir.dao;
+package com.sezayir.repository;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

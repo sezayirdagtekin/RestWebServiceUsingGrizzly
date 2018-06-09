@@ -6,9 +6,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import com.sezayir.dao.DerbDbRepsository;
-import com.sezayir.entity.Account;
-import com.sezayir.entity.Customer;
+
+import com.sezayir.model.Account;
+import com.sezayir.model.Customer;
+import com.sezayir.repository.DerbDbRepsository;
 
 public class CustomerServiceImpl implements CustomerService {
 
