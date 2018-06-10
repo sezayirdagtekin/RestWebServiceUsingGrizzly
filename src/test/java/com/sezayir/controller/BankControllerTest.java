@@ -12,7 +12,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
-public class ControllerTest {
+public class BankControllerTest {
 
 	@Mock
 	BankController bankController;
@@ -60,6 +60,16 @@ public class ControllerTest {
 		String expected = "Insufficient balance!!!";
 		Mockito.when(bankController.transfer(USER1, USER2, new BigDecimal(12000))).thenReturn("Insufficient balance!!!");
 		String actual = bankController.transfer(USER1, USER2, new BigDecimal(12000));
+		assertThat(actual, is(not(notExpected)));
+		assertThat(actual, is(expected));
+	}
+	
+	@Test
+	public void transferMoneyBetweenInvalidAccounsTest() throws ClassNotFoundException, SQLException {
+		String notExpected = "100 $ is transfered from user1 to user2";
+		String expected = "Insufficient balance!!!";
+		Mockito.when(bankController.transfer(USER1, "USERXX", new BigDecimal(100))).thenReturn("Insufficient balance!!!");
+		String actual = bankController.transfer(USER1, "USERXX", new BigDecimal(100));
 		assertThat(actual, is(not(notExpected)));
 		assertThat(actual, is(expected));
 	}
