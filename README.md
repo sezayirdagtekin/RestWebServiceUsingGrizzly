@@ -10,16 +10,14 @@ Basic REST Web Service using Grizzly, Jersey, and Maven
 
 3 .   Compile the project:
        mvn clean compile  /  mvn clean install , execute unit tests
-4  .    Execute the project: mvn exec:java
+4 .    Execute the project: mvn exec:java
 
 with Postman:
-1. Display Customers:
-  GET
+1. Display Customers: GET
    http://localhost:8080/bank/customers
-2. Display Accounts:
-   GET
-   http://localhost:8080/bank/accounts
    
+2. Display Accounts:GET
+   http://localhost:8080/bank/accounts
    
     {
         "accountId": 1001,
