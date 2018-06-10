@@ -23,7 +23,7 @@ public class BankController {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("users")
+	@Path("customers")
 	public String getCustomers() throws ClassNotFoundException, SQLException {
 		
 		CustomerService bs = new CustomerServiceImpl();
@@ -55,7 +55,7 @@ public class BankController {
 
 		BigDecimal subtract = source.getBalance().subtract(amount);
 
-		if (subtract.compareTo(BigDecimal.ZERO) > 0) {
+		if (subtract.compareTo(BigDecimal.ZERO) >= 0) {
 			source.setBalance(subtract);
 			target.setBalance(target.getBalance().add(amount));
 			service.updateAccount(source);
