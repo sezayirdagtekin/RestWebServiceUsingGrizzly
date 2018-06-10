@@ -45,7 +45,10 @@ public class App {
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException {
 		final HttpServer server = startServer();
-		log.info("Jersey app started and  available at :" + BASE_URI);
+		log.info("Jersey app started");
+		log.info("Accounts Url:"+BASE_URI+"bank/accounts");
+		log.info("Customers Url:"+BASE_URI+"bank/customers");
+		log.info("Money transfer example:"+BASE_URI+"bank/user1/transfer/user2/300");
 		//Clean old derby folders
 		Util.deleteDirectoryStream(DERBY_PATH);
 		
