@@ -3,6 +3,10 @@ Ing banks treasury  interview task
 
 Basic REST Web Service using Grizzly, Jersey, and Maven
 
+What Do You Need?
+   Maven 3.5.3 
+  java 1.8
+
 1 . Get project from github 
     git  clone https://github.com/sezayirdagtekin/ing-interview
 
