@@ -27,7 +27,7 @@ public class AccountDao {
 		return result;
 	}
 
-	public  List<Account> getAccounts() throws ClassNotFoundException, SQLException {
+	public  static List<Account> getAccounts() throws ClassNotFoundException, SQLException {
 		Statement st = DerbDbRepsository.getConnection().createStatement();
 		List<Account> accounts = new ArrayList<>();
 		ResultSet rec = st.executeQuery("select accountid,username,balance from Account");
