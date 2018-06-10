@@ -10,6 +10,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import com.google.gson.Gson;
+import com.sezayir.exception.MoneyTransferException;
 import com.sezayir.model.Account;
 import com.sezayir.model.Customer;
 import com.sezayir.service.AcccountService;
@@ -47,18 +48,18 @@ public class BankController {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{sourceUserName}/transfer/{targetUserName}/{amount}")
 	public String transfer(@PathParam("sourceUserName") String sourceUserName, @PathParam("targetUserName") String targetUserName, @PathParam("amount") BigDecimal amount)
-			throws ClassNotFoundException, SQLException {
+			throws ClassNotFoundException, SQLException{
 
 		AcccountService service = new AccountServiceImpl();
 		Account source = service.getAccountByUsername(sourceUserName);
 		Account target = service.getAccountByUsername(targetUserName);
 
 		if (source == null || target == null) {
-			return "Invalid  account!!!";
+			return  new MoneyTransferException("Invalid  account!!!").getMessage();
 		}
 		BigDecimal subtract = source.getBalance().subtract(amount);
 		if (subtract.compareTo(BigDecimal.ZERO) < 0) {
-			return "Insufficient balance!!!";
+			return  new MoneyTransferException("Insufficient balance!!!").getMessage();
 		}
 		source.setBalance(subtract);
 		target.setBalance(target.getBalance().add(amount));
