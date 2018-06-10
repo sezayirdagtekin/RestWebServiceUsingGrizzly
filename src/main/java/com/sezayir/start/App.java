@@ -3,8 +3,10 @@ package com.sezayir.start;
 import java.io.IOException;
 import java.net.URI;
 import java.sql.SQLException;
+import java.util.Properties;
 
 import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
@@ -21,6 +23,7 @@ import com.sezayir.util.Util;
  *
  */
 public class App {
+
 	final static Logger log= Logger.getLogger(App.class);
 	
     // Base URI the Grizzly HTTP server will listen on
@@ -43,6 +46,7 @@ public class App {
 
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException {
+		init();
 		final HttpServer server = startServer();
 		log.info("Jersey app started");
 		log.info("Accounts Url:"+BASE_URI+"bank/accounts");
@@ -63,6 +67,17 @@ public class App {
 		accountService.dropAccountTable();
 		server.stop();
 	}
+	//Solution for standalone java application
+	//WARN No appenders could be found for logger, Please initialize the log4j system properly
+	public static void init() {
+		Properties log4jProperties = new Properties();
+		log4jProperties.setProperty("log4j.rootLogger", "DEBUG, A1");
+		log4jProperties.setProperty("log4j.appender.A1", "org.apache.log4j.ConsoleAppender");
+		log4jProperties.setProperty("log4j.appender.A1.layout", "org.apache.log4j.PatternLayout");
+		log4jProperties.setProperty("log4j.appender.A1.layout.ConversionPattern", "%-4r [%t] %-5p %c %x - %m%n");
+		PropertyConfigurator.configure(log4jProperties);
+	}
+
     
 
 }
