@@ -20,7 +20,7 @@ with Postman:
    GET
    http://localhost:8080/bank/accounts
    
-   [
+   
     {
         "accountId": 1001,
         "userName": "user1",
@@ -31,7 +31,7 @@ with Postman:
         "userName": "user2",
         "balance": 2000
     }
-]
+
    
  3. Transfer money between two users
     PUT
@@ -42,7 +42,7 @@ with Postman:
    4. Check user accounts again
      http://localhost:8080/bank/accounts
      
-  [
+  
     {
         "accountId": 1001,
         "userName": "user1",
@@ -53,6 +53,6 @@ with Postman:
         "userName": "user2",
         "balance": 2300
     }
-]
+
 
 
